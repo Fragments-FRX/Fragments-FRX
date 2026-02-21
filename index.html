@@ -65,7 +65,7 @@
             100% { transform: translateY(0px); }
         }
 
-        /* Living Video Logo */
+        /* Living Video Logo - Mobile Fix */
         .logo {
             max-width: 320px;
             width: 100%;
@@ -73,9 +73,11 @@
             margin-bottom: 20px;
             animation: float 5s ease-in-out infinite;
             mix-blend-mode: screen; 
-            /* We removed the drop-shadow and added a radial mask to feather the edges */
-            -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
-            mask-image: radial-gradient(circle, black 60%, transparent 100%);
+            /* Forces dark gray to black so the background deletes cleanly */
+            filter: contrast(1.4) brightness(0.9); 
+            /* Tightens the fade to completely hide the sharp rectangular corners */
+            -webkit-mask-image: radial-gradient(circle, black 50%, transparent 75%);
+            mask-image: radial-gradient(circle, black 50%, transparent 75%);
         }
 
         h1 {
