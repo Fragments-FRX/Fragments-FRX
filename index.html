@@ -73,7 +73,9 @@
             margin-bottom: 20px;
             animation: float 5s ease-in-out infinite;
             mix-blend-mode: screen; 
-            filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+            /* We removed the drop-shadow and added a radial mask to feather the edges */
+            -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
+            mask-image: radial-gradient(circle, black 60%, transparent 100%);
         }
 
         h1 {
