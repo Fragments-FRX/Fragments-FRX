@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frægmang ($FRX) | The Digital Treasure</title>
+    <style>
+        /* Modern CSS Reset & Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;600;700&display=swap');
+        
+        body {
+            margin: 0;
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: #03050a;
+            color: #ffffff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        /* Ambient Background Glow Effects */
+        .bg-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(170, 35, 255, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            top: -200px;
+            left: -200px;
+            z-index: -1;
+            filter: blur(50px);
+        }
+        .bg-glow-2 {
+            position: fixed;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, rgba(0, 0, 0, 0) 70%);
+            bottom: -300px;
+            right: -200px;
+            z-index: -1;
+            filter: blur(50px);
+        }
+
+        /* Ancient Runic Watermark */
+        .runic-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 10vw;
+            color: rgba(255, 215, 0, 0.04);
+            white-space: nowrap;
+            z-index: -2;
+            pointer-events: none;
+            letter-spacing: 15px;
+        }
+
+        header {
+            padding: 80px 20px 40px;
+            position: relative;
+        }
+
+        /* Floating Animation for the Logo */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .logo {
+            max-width: 280px;
+            height: auto;
+            margin-bottom: 30px;
+            animation: float 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 30px rgba(0, 229, 255, 0.5)) drop-shadow(0 0 15px rgba(170, 35, 255, 0.6));
+        }
+
+        h1 {
+            font-size: 4em;
+            margin: 0;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            background: linear-gradient(to right, #ffffff, #b0bec5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .symbol {
+            background: linear-gradient(to right, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        h2 {
+            font-size: 1.2em;
+            font-weight: 300;
+            letter-spacing: 1px;
+            margin-top: 15px;
+            color: #00E5FF;
+        }
+
+        .container {
+            padding: 20px 20px 80px;
+            max-width: 1000px;
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        p {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #94a3b8;
+        }
+
+        /* Glassmorphism Sections */
+        .section-box {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 50px;
+            margin-top: 60px;
+            text-align: left;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .section-box:hover {
+            border-color: rgba(0, 229, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .section-box h3 {
+            color: #ffffff;
+            margin-top: 0;
+            margin-bottom: 30px;
+            text-align: center;
+            font-size: 2.2em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-box h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 3px;
+            background: #00E5FF;
+            bottom: -10px;
+            left: 25%;
+            border-radius: 2px;
+        }
+
+        /* Epic Verse Styling */
+        .epic-verse {
+            background: rgba(0, 0, 0, 0.4);
+            border-left: 4px solid #FFD700;
+            padding: 30px;
+            border-radius: 0 10px 10px 0;
+            margin: 30px 0;
+            font-style: italic;
+            text-align: center;
+        }
+
+        .epic-verse .old-english {
+            color: #00E5FF;
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .epic-verse .translation {
+            color: #b0bec5;
+            font-size: 1.1em;
+        }
+
+        .tokenomics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .token-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px 20px;
+            border-radius: 15px;
+            border-top: 4px solid #AA23FF; 
+            text-align: center;
+            transition: all 0.4s ease;
+        }
+
+         .token-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(170, 35, 255, 0.4);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .token-item h4 {
+            margin: 0 0 15px 0;
+            color: #e2e8f0;
+            font-size: 1.1em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .token-item p {
+            margin: 0;
+            color: #00E5FF;
+            font-weight: 700;
+            font-size: 1.8em;
+        }
+
+        .roadmap-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        .roadmap-list li {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 25px;
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 4px solid #00E5FF; 
+            color: #94a3b8;
+            font-size: 1.1em;
+            line-height: 1.6;
+            transition: all 0.3s ease;
+        }
+
+        .roadmap-list li:hover {
+            background: rgba(0, 229, 255, 0.03);
+            border-color: rgba(0, 229, 255, 0.2);
+            transform: translateX(10px);
+        }
+
+        .roadmap-list .phase {
+            display: block;
+            color: #FFD700;
+            font-weight: 700;
+            margin-bottom: 12px;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .footer {
+            margin-top: 20px;
+            padding: 40px;
+            background: rgba(0,0,0,0.5);
+            font-size: 0.9em;
+            color: #64748b;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-glow"></div>
+<div class="bg-glow-2"></div>
+<div class="runic-bg">ᚠᚱᚫᚷᛗᚪᚾᚷ ᚷᛖᛋᛏᚱᛖᚩᚾ</div>
+
+<header>
+    <img src="logo.png" alt="Frægmang Token Logo" class="logo">
+    <h1>FRÆGMANG <span class="symbol">($FRX)</span></h1>
+    <h2>From Digital Fragments Accumulation Becoming A New Perfect Digital Currency</h2>
+</header>
+
+<div class="container">
+    
+    <div class="section-box">
+        <h3>The Philosophy</h3>
+        
+        <div class="epic-verse">
+            <div class="old-english">
+                "Niwe frægmang gaderod, in cybere weoruld samnod,<br>
+                weorc gestreona, feoh on frægmang,<br>
+                Þus wæs se digital gestreon acenned."
+            </div>
+            <div class="translation">
+                "New fragments gathered, assembled in the cyber world,<br>
+                the work of treasure, wealth in fragments,<br>
+                thus was the digital treasure born."
+            </div>
+        </div>
+
+        <p>The vision behind Frægmang ($FRX) was born from the understanding that true value is not found in chaotic noise, but in patient, deliberate accumulation. We step away from the exhaustion of unpredictable markets to build a foundation that supports clean, readable momentum.</p>
+        
+        <p>By capping the supply at a strict 100,000,000 and locking a massive 60% into the liquidity pool, we have engineered a modern digital artifact. It is a currency designed for the patient participant—those who prefer to gather their treasure steadily and ride the broader cycles with unwavering discipline.</p>
+    </div>
+
+    <div class="section-box">
+        <h3>Tokenomics</h3>
+        <p style="text-align: center; margin-bottom: 0; color: #ffffff; font-size: 1.3em; letter-spacing: 1px;">TOTAL SUPPLY: <strong>100,000,000 $FRX</strong></p>
+        <div class="tokenomics-grid">
+            <div class="token-item">
+                <h4>The Hoard (Liquidity)</h4>
+                <p>60%</p>
+            </div>
+            <div class="token-item">
+                <h4>The Guild (Community)</h4>
+                <p>20%</p>
+            </div>
+            <div class="token-item">
+                <h4>The Expansion (Growth)</h4>
+                <p>10%</p>
+            </div>
+            <div class="token-item">
+                <h4>The Forgers (Team)</h4>
+                <p>10%</p>
+            </div>
+        </div>
+        <p style="text-align: center; font-size: 0.9em; margin-top: 30px; color: #64748b;">
+            * Team and Growth tokens are vested over 12 months. Zero Buy/Sell Taxes to ensure optimal liquidity and seamless trading.
+        </p>
+    </div>
+
+    <div class="section-box">
+        <h3>Roadmap</h3>
+        <ul class="roadmap-list">
+            <li>
+                <span class="phase">Phase 1: Accumulating the Fragments</span>
+                PUF Launchpad Deployment, Smart Contract Audit, Guild Building, and Initial DEX Offering (IDO). 
+            </li>
+            <li>
+                <span class="phase">Phase 2: The Cyber-Hoard</span>
+                CoinGecko & CoinMarketCap Listings, Strategic Marketing Rollout, and integration with advanced tracking tools.
+            </li>
+            <li>
+                <span class="phase">Phase 3: The Digital Treasure</span>
+                Top Tier Centralized Exchange (CEX) Listings, Staking Platform Launch, and establishing real-world utility within the broader Web3 ecosystem.
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+<div class="footer">
+    &copy; 2026 Frægmang ($FRX). All rights reserved. Built on Worldchain.
+</div>
+
+</body>
+</html>
