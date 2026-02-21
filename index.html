@@ -327,6 +327,14 @@
             .runic-bg {
                 font-size: 15vw;
             }
+            /* --- THE FIX FOR THE OVERFLOW --- */
+            .section-box {
+                padding: 30px 20px; /* Reduces massive padding to give text more room */
+            }
+            .roadmap-list .phase {
+                font-size: 1.1em; /* Shrinks the phase title so long words fit perfectly */
+                word-wrap: break-word; /* Forces a break if a word is still too stubborn */
+            }
         }
     </style>
 </head>
