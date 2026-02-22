@@ -233,6 +233,45 @@
             gap: 25px;
             margin-top: 40px;
         }
+                /* Utility Section Grid */
+        .utility-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .utility-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 30px 25px;
+            border-radius: 15px;
+            border-top: 4px solid #FFD700;
+            text-align: left;
+            transition: all 0.4s ease;
+        }
+
+        .utility-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 215, 0, 0.4);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .utility-item h4 {
+            margin: 0 0 15px 0;
+            color: #00E5FF;
+            font-size: 1.3em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .utility-item p {
+            margin: 0;
+            font-size: 1.05em;
+            line-height: 1.7;
+            color: #b0bec5;
+        }
 
         .token-item {
             background: rgba(255, 255, 255, 0.03);
@@ -265,7 +304,27 @@
             font-weight: 700;
             font-size: 1.8em;
         }
-
+        
+    <div class="section-box">
+        <h3>The Utility</h3>
+        <p class="center-text">Forged natively on Worldchain, $FRX leverages institutional-grade infrastructure to protect the patient participant.</p>
+        
+        <div class="utility-grid">
+            <div class="utility-item">
+                <h4>The Shielded Hoard</h4>
+                <p>Protected by Priority Blockspace for Humans (PBH). The Guild accumulates $FRX with clean entries, completely shielded from predatory MEV bots and front-running.</p>
+            </div>
+            <div class="utility-item">
+                <h4>The Golden Pair</h4>
+                <p>Anchored in native USDC. The Hoard's locked liquidity is paired with fully-backed, institutional-grade stability, drastically reducing the erratic micro-movements that chop up the timeline.</p>
+            </div>
+            <div class="utility-item">
+                <h4>The Guild's Consensus</h4>
+                <p>Secured by World ID. True Sybil-resistant governance. One verified human equals exactly one vote, mathematically guaranteeing that massive wallets cannot overrule The Guild.</p>
+            </div>
+        </div>
+    </div>
+        
         .roadmap-list {
             list-style: none;
             padding: 0;
